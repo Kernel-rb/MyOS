@@ -2,8 +2,14 @@
 name = "my_os"
 version = "0.1.0"
 edition = "2018"
-author = "kernel.rb"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+#!comment this line to use the default build target
+[profile.dev]
+panic = "abort" # disable satck uwinding
+[profile.release]
+panic = "abort" # disable satck uwinding
 
 [dependencies]
+
+
