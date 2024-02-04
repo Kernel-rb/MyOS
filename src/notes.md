@@ -1,3 +1,4 @@
+# STEP 1 : 
 # Intro :
 ## Bare Machine:
 ### Definiton :
@@ -52,3 +53,43 @@
 ## name mangling : 
     -   is a technique used by the compiler to encode the names of the functions and variables in the object file.
     -   it is used to avoid name conflicts and to support function overloading.
+
+## Linker Erros : 
+    -  Linker is a program that combines the genrated code into an executable program.
+    - to Handle the **error** :
+        -  **<arch><sub>-<vendor>-<sys>-<env>**,
+
+        -- arch = x86_64, i386, arm, thumb, mips, etc.
+
+        -- sub = for ex. on ARM: v5, v6m, v7a, v7m, etc.
+
+        -- vendor = pc, apple, nvidia, ibm, etc.
+
+        -- sys = none, linux, win32, darwin, cuda, etc.
+
+        -- env = eabi, gnu, android, macho, elf, etc.
+
+## ABI : 
+    - application binary interface is an interface between two binary program modules 
+
+# STEP 2 : 
+## Boot Process :
+    - the first thing:  The ROM (Read-Only Memory) contains the firmware.
+    - This code performes a power-on self-test (POST) to check the hardware.
+    - In the x86 architecture : 
+        a - BIOS (old) => Basic Input/Output System
+        b - UEFI (new) => Unified Extensible Firmware Interface
+## CPU Modes : 
+    - 1 - Real Mode : 
+        - 16-bit mode
+        - no memory protection
+        - no multitasking
+    - 2 - Protected Mode : 
+        - 32-bit mode
+        - memory protection
+        - multitasking
+    - 3 - Long Mode : 
+        - 64-bit mode
+        - memory protection
+        - multitasking
+## Minimal Kernel : 

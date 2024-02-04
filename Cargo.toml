@@ -3,13 +3,8 @@ name = "my_os"
 version = "0.1.0"
 edition = "2018"
 
-
-#!comment this line to use the default build target
-[profile.dev]
-panic = "abort" # disable satck uwinding
-[profile.release]
-panic = "abort" # disable satck uwinding
-
 [dependencies]
+bootloader = "0.9.23"
+
 
 
