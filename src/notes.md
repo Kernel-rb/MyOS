@@ -124,3 +124,26 @@
     - it is used to access the VGA text buffer.
     - the VGA text buffer is located at the address 0xb8000.
     - we can write to this address to display text on the screen.
+## Volatile library in Rust : 
+    - is a library that provides volatile read and write operations.
+    - it is used to access memory-mapped I/O.
+    - it is used to prevent the compiler from optimizing away the I/O operations.
+### Crates in Rust : 
+     - Crates is a collection of Rust source code files.
+     - package == crate 
+## Formatting Macros : 
+    - est une macro qui formate une chaîne de caractères. macro c est une fonction qui génère du code.
+## Lazy Statics : 
+    - est une variable statique qui est initialisée à l'exécution. par exemple , dans notre cas, on l'utilise pour initialiser le VGA text buffer. 
+    - is a static variable that is initialized at runtime.
+    - it is used to initialize the VGA text buffer.
+## SPIN LOCKS :
+    - est une technique pour synchroniser l'accès à une ressource partagée.par exemple, dans notre cas, on l'utilise pour synchroniser l'accès au VGA text buffer. le buffer est partagé entre plusieurs threads. 
+    - is a technique to synchronize access to a shared resource.
+
+## Safety: 
+    - est une propriété d'un programme qui garantit qu'il ne provoquera pas de comportement indéfini.
+    - is a property of a program that guarantees it will not cause undefined behavior.
+## println Macro : 
+    - est une macro qui imprime une chaîne de caractères sur la console.
+    - is a macro that prints a string to the console.
