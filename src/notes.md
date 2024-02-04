@@ -92,4 +92,35 @@
         - 64-bit mode
         - memory protection
         - multitasking
-## Minimal Kernel : 
+# STEP 3 :
+## VGA Text Mode:
+### Definition : 
+    -  is a simple way to print text on the screen.
+    -  it is used by the BIOS to display the boot messages.
+    -  it is also used by the operating system to display the console.
+## The VGA text buffer : 
+            | Bit(s)   | Value             |
+            |----------|------------------ |
+            | 0-7      | ASCII code point  |
+            | 8-11     | Foreground color  |
+            | 12-14    | Background color  |
+            | 15       | Blinking bit      |
+    - ASCII  is a character encoding standard for electronic communication.
+
+    | Number | Color   | Number + Bright Bit | Bright Color |
+    |--------|---------|---------------------|--------------|
+    | 0x0    | Black   | 0x8                 | Dark Gray    |
+    | 0x1    | Blue    | 0x9                 | Light Blue   |
+    | 0x2    | Green   | 0xa                 | Light Green  |
+    | 0x3    | Cyan    | 0xb                 | Light Cyan   |
+    | 0x4    | Red     | 0xc                 | Light Red    |
+    | 0x5    | Magenta | 0xd                 | Pink         |
+    | 0x6    | Brown   | 0xe                 | Yellow       |
+    | 0x7    | Li-Gray | 0xf                 | White        |
+
+## Memory Mapped I/O : 
+    - c est une technique pour communiquer avec les périphériques matériels en utilisant des adresses mémoire.
+    - is a technique to communicate with hardware devices using memory addresses.
+    - it is used to access the VGA text buffer.
+    - the VGA text buffer is located at the address 0xb8000.
+    - we can write to this address to display text on the screen.
