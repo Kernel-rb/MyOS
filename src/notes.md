@@ -147,3 +147,10 @@
 ## println Macro : 
     - est une macro qui imprime une chaîne de caractères sur la console.
     - is a macro that prints a string to the console.
+# STEP 4 :
+## TEST : 
+    - est une fonction qui vérifie si une condition est vraie.
+    - is a function that checks if a condition is true.
+## Should Panic test : 
+    - est un test qui vérifie si une fonction panique.
+    - is a test that checks if a function panics.

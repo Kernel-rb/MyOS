@@ -7,9 +7,12 @@ mod vga_buffer; // import the module vga_buffer
 
 use core::panic::PanicInfo;
 #[panic_handler] // when the program panics, it will call this function
-fn panic(_info: &PanicInfo) -> ! {
+fn panic(info: &PanicInfo) -> ! {
+    println!("{}", info);
+    
     loop {}
 }
+
 
 
 
@@ -18,10 +21,11 @@ pub extern "C" fn _start() -> ! {
     // the default entry point of the program && also is the entry point of every OS
     // "C" => to tell the compiler to use the C calling convention
     // "!": the function never returns 
-    print!("Welcome to RustOS , version : {}", 0.1);
+    println!("Hello World{}", "!");
+    
+
 
     loop {}
 }
-
 
 
