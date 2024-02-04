@@ -18,8 +18,7 @@ pub extern "C" fn _start() -> ! {
     // the default entry point of the program && also is the entry point of every OS
     // "C" => to tell the compiler to use the C calling convention
     // "!": the function never returns 
-    
-    println!("Hellowold{}", "!");
+    print!("Welcome to RustOS , version : {}", 0.1);
 
     loop {}
 }
