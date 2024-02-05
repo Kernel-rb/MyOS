@@ -204,3 +204,9 @@
 ## Integration Test : 
     - est un test qui vérifie si plusieurs composants fonctionnent ensemble.
     - is a test that checks if multiple components work together.
+
+## Future Tests :
+    - **CPU Exceptions**:
+        - est un test qui vérifie si le noyau gère les exceptions du processeur.
+        - is a test that checks if the kernel handles CPU exceptions.
+        
