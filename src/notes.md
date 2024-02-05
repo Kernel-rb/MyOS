@@ -154,3 +154,53 @@
 ## Should Panic test : 
     - est un test qui vérifie si une fonction panique.
     - is a test that checks if a function panics.
+## Conditon Compilation in Rust : 
+    - est une technique pour compiler du code conditionnellemen ( en fonction de la configuration du programme).
+    - is a technique to conditionally compile code.
+
+## APM : 
+    - est une interface pour gérer l'alimentation de l'ordinateur.
+    - is an interface to manage the power of the computer.
+
+## ACPI :
+    - est une interface pour gérer l'alimentation de l'ordinateur.
+    - is an interface to manage the power of the computer.
+## isa-debug-exit : 
+    - est une instruction pour arrêter l'exécution du processeur.
+    - is an instruction to stop the execution of the processor.
+
+## IO Ports : 
+    - est une technique pour communiquer avec les périphériques matériels en utilisant des adresses d'entrée/sortie.
+    - is a technique to communicate with hardware devices using input/output addresses.
+### 0xf4 :  
+    - est un port généralement inutilisé sur l'architecture x86.
+    - is generally unused port on the x86 architecture.
+### 0x04 :
+    - est 4 octets (bytes).
+    - is 4 bytes.
+
+## x86_64 Architecture : 
+    - est une architecture de processeur 64 bits.
+    - is a 64-bit processor architecture.
+## Print the Console :
+    - pour voir la sortie de la console, nous devons envoyer des données de notre noyau au système hôte.
+    - to see the output of the console, we need to send data from our kernel to the host system.
+## Serial Port : 
+    - est un port de communication série.
+    - is a serial communication port.
+## Uart 1650 : 
+    - est un circuit intégré pour la communication série.
+    - is an integrated circuit for serial communication.
+## CI service : 
+    - est un service qui exécute des tests sur le code source.
+    - is a service that runs tests on the source code.
+## SSH : 
+    - est un protocole pour se connecter à un ordinateur à distance.
+    - is a protocol to connect to a computer remotely.
+## *Timeouts* : 
+    - est un mécanisme pour arrêter une opération après un certain temps.
+    - is a mechanism to stop an operation after a certain time.
+
+## Integration Test : 
+    - est un test qui vérifie si plusieurs composants fonctionnent ensemble.
+    - is a test that checks if multiple components work together.
