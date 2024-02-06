@@ -21,3 +21,7 @@ test-args = [
 ]# QEMU exit code , iobase => 0xf4 is the port to write the exit code to, iosize => 0x04 is the size of the port
 test-success-exit-code = 33   # QEMU exit code for success
 test-timeout = 300    # timeout after 5 min 
+
+[[test]] 
+name = "should_panic" # test name
+harness = false  # just to run the test without the test harness bcz we are testing the panic

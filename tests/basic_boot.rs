@@ -5,7 +5,7 @@
 #![reexport_test_harness_main = "test_main"]
 
 
-use my_os_os::println;
+use my_os::println;
 use core::panic::PanicInfo;
 
 #[no_mangle] // don't mangle the name of this function
