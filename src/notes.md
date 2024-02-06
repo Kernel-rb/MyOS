@@ -209,4 +209,7 @@
     - **CPU Exceptions**:
         - est un test qui vérifie si le noyau gère les exceptions du processeur.
         - is a test that checks if the kernel handles CPU exceptions.
-        
+
+## Test  Should Panic :
+    - est un test qui vérifie si une fonction panique.
+    - is a test that checks if a function panics.
