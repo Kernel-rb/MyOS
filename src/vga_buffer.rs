@@ -185,19 +185,3 @@ fn test_println_long() {
     }
 }
 
-
-//  ----------------------------------------------- Failed test --------------------------
-// #[test_case]
-// fn test_non_unicode_char() {
-//     println!("This is a test with a non-unicode char: \x1F");
-//     let screen_char = WRITER.lock().buffer.chars[BUFFER_HEIGHT - 2][30].read();
-//     assert_eq!(char::from(screen_char.ascii_character), '�');
-// }
-
-// #[test_case]
-// fn cpu_exception() {
-//     println!("Testing CPU exception");
-//     x86_64::instructions::interrupts::int3();
-// }
-
-

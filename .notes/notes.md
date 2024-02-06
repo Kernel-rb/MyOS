@@ -213,3 +213,17 @@
 ## Test  Should Panic :
     - est un test qui vérifie si une fonction panique.
     - is a test that checks if a function panics.
+
+## CPU Excepetions :
+    - est un test qui vérifie si le noyau gère les exceptions du processeur en cas d'erreur. 
+    - is a test that checks if the kernel handles CPU exceptions in case of an error.
+### Breackpoint :
+    - est un point d'arrêt dans le code. par exemple, dans notre cas, on l'utilise pour arrêter l'exécution du processeur.
+    - is a point in the code where the execution stops. for example, in our case, we use it to stop the execution of the processor.
+#### INT 3 :
+    - est une instruction pour arrêter l'exécution du processeur.
+    - is an instruction to stop the execution of the processor.
+
+### Overflow :
+    - est un test qui vérifie si le noyau gère les débordements arithmétiques. par exemple , si on fait une addition et le résultat dépasse la capacité du registre. ( register est un espace mémoire dans le processeur).
+    - is a test that checks if the kernel handles arithmetic overflows.if we add two numbers and the result exceeds the capacity of the register. (max value of the register is 2^64-1). 
