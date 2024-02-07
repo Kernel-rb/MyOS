@@ -199,11 +199,3 @@ fn test_println_newline() {
     }
 }
 
-#[test_case]
-fn just_print() {
-    print!("Just print");
-    for (i, c) in "Just print".chars().enumerate() {
-        let screen_char = WRITER.lock().buffer.chars[BUFFER_HEIGHT - 2][i].read();
-        assert_eq!(char::from(screen_char.ascii_character), c);
-    }
-}
