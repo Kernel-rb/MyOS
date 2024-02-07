@@ -185,3 +185,16 @@ fn test_println_long() {
     }
 }
 
+#[test_case]
+fn test_println_newline() {
+    println!("Some test string");
+    println!("\nNewline here");
+    for (i, c) in "Some test string".chars().enumerate() {
+        let screen_char = WRITER.lock().buffer.chars[BUFFER_HEIGHT - 3][i].read();
+        assert_eq!(char::from(screen_char.ascii_character), c);
+    }
+    for (i, c) in "Newline here".chars().enumerate() {
+        let screen_char = WRITER.lock().buffer.chars[BUFFER_HEIGHT - 2][i].read();
+        assert_eq!(char::from(screen_char.ascii_character), c);
+    }
+}
