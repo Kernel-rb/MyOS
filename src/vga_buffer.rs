@@ -206,4 +206,4 @@ fn just_print() {
         let screen_char = WRITER.lock().buffer.chars[BUFFER_HEIGHT - 2][i].read();
         assert_eq!(char::from(screen_char.ascii_character), c);
     }
-}upda
+}
