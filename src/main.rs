@@ -18,9 +18,20 @@ pub extern "C" fn _start() -> ! {
     // the default entry point of the program && also is the entry point of every OS
     // "C" => to tell the compiler to use the C calling convention
     // "!": the function never returns 
+    
+    // welcome message
     println!("Welcome to  RustOS , version: {}", "0.1.0");
+    my_os::init(); // to initialize the OS
+    x86_64::instructions::interrupts::int3(); // to trigger a breakpoint exception
+
+    // to test the breakpoint exception
     #[cfg(test)]
-    test_main();   
+    test_main(); 
+    
+    // to test the breakpoint exception
+    println!("It did not crash!");
+
+
     loop {}
 }
 
@@ -42,28 +53,3 @@ fn panic(info: &PanicInfo) -> ! {
 
 
 
-
-
-
-// -------------------------------------- Test Runner  --------------------------------------
-// #[test_case]
-// fn trivial_assertion(){ // the test function should return nothing
-//     assert_eq!(1, 1); // if the condition is true, it will do nothing, otherwise it will panic
-// }
-
-
-
-// // --------------------------------------- Exit Qemu : ---------------------------------------
-// #[derive(Debug, Clone, Copy, PartialEq, Eq)] // to derive some traits for the enum ( enum est un type de donnée qui peut avoir plusieurs valeurs )
-// #[repr(u32)] // to represent the enum as a 32-bit integer
-// pub enum QemuExitCode {
-//     Success = 0x10, // to represent the success
-//     Failed = 0x11, // to represent the failure
-// }
-// pub fn exit_qemu(exit_code: QemuExitCode) {
-//     use x86_64::instructions::port::Port; // to use the Port struct from the x86_64 crate
-//     unsafe{ // we use unsafe because we are doing some low-level operations and to tell the compiler that we are aware of the risks
-//     let mut port =Port::new(0xf4); // to create a new Port instance ( read notes to understand the port number)
-//     port.write(exit_code as u32); // to write the exit code to the port
-//     }
-// }

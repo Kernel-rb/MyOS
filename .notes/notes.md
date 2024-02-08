@@ -214,9 +214,30 @@
     - est un test qui vérifie si une fonction panique.
     - is a test that checks if a function panics.
 
+# STEP 5 :
 ## CPU Excepetions :
     - est un test qui vérifie si le noyau gère les exceptions du processeur en cas d'erreur. 
     - is a test that checks if the kernel handles CPU exceptions in case of an error.
+### Page Fault :
+    - est un test qui vérifie si le noyau gère les erreurs de page.
+    - is a test that checks if the kernel handles page errors.##
+### invalid opcode : 
+    - est un test qui vérifie si le noyau gère les opcodes invalides. ( opcode est une instruction pour le processeur qui spécifie une opération à effectuer par exemple : add, sub, mov, etc.)
+    - is a test that checks if the kernel handles invalid opcodes.
+####  SSE instructions : 
+    - est un test qui vérifie si le noyau gère les instructions SSE invalides. (SSE est une extension du jeu d'instructions x86 pour les processeurs Intel).
+    - is a test that checks if the kernel handles invalid SSE instructions.
+### General Protection Fault :
+    - est un test qui vérifie si le noyau gère les erreurs de protection générale.
+    - is a test that checks if the kernel handles general protection errors.
+### Double Fault :
+    - est un test qui vérifie si le noyau gère les erreurs de double faute ( double fault est une erreur qui se produit lorsque le processeur rencontre une erreur lors du traitement d'une exception).
+    - is a test that checks if the kernel handles double fault errors. 
+
+### Triple fault :
+    - est un test qui vérifie si le noyau gère les erreurs de triple faute ( triple fault est une erreur qui se produit lorsque le processeur rencontre une erreur lors du traitement d'une double faute).
+    - is a test that checks if the kernel handles triple fault errors.
+
 ### Breackpoint :
     - est un point d'arrêt dans le code. par exemple, dans notre cas, on l'utilise pour arrêter l'exécution du processeur.
     - is a point in the code where the execution stops. for example, in our case, we use it to stop the execution of the processor.
@@ -227,3 +248,36 @@
 ### Overflow :
     - est un test qui vérifie si le noyau gère les débordements arithmétiques. par exemple , si on fait une addition et le résultat dépasse la capacité du registre. ( register est un espace mémoire dans le processeur).
     - is a test that checks if the kernel handles arithmetic overflows.if we add two numbers and the result exceeds the capacity of the register. (max value of the register is 2^64-1). 
+
+## The interrupt Descriptor Table (IDT) :
+    - est une table qui contient les descripteurs des interruptions. les interruptions sont des signaux envoyés par le matériel ou le logiciel pour interrompre l'exécution du processeur.
+    - is a table that contains the interrupt descriptors.
+    - interrupts are signals sent by hardware or software to interrupt the execution of the processor.
+
+    -   | Type | Name | Description |
+        |------|------|-------------|
+        | u16 | Function Pointer [0:15] | The lower bits of the pointer to the handler function. |
+        | u16 | GDT selector | Selector of a code segment in the global descriptor table. |
+        | u16 | Options | (see below) |
+        | u16 | Function Pointer [16:31] | The middle bits of the pointer to the handler function. |
+        | u32 | Function Pointer [32:63] | The remaining bits of the pointer to the handler function. |
+        | u32 | Reserved | |
+        
+### When an exception occurs, the processor:
+    - 1 - Pushes the error code (if any) onto the stack.
+    - 2 - Read the corresponding entry in the IDT.
+    - 3 - Check if the entry is present. if not , it triggers a double fault.
+    - 4 - Disable hardware interrupts. if the entry is an interrupt gate. (bit 40 not set).
+    - 5 - Load the specified GDT selector into the code segment register.
+    - 6 - Jump to the handler function.
+_In Fr_ :
+    - 1 - Pousse le code d'erreur (le cas échéant) sur la pile.
+    - 2 - Lit l'entrée correspondante dans l'IDT.
+    - 3 - Vérifie si l'entrée est présente. sinon, il déclenche une double faute.
+    - 4 - Désactive les interruptions matérielles. si l'entrée est une porte d'interruption. (bit 40 non défini).
+    - 5 - Charge le sélecteur GDT spécifié dans le registre de segment de code.
+    - 6 - Sauter à la fonction de gestionnaire.
+
+## IDT Type : 
+    - est un champ dans l'entrée de la table des descripteurs d'interruption (IDT) qui spécifie le type de la porte d'interruption.
+    - is a field in the interrupt descriptor table (IDT) entry that specifies the type of the interrupt gate.
