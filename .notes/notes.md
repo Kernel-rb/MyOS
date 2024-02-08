@@ -281,3 +281,7 @@ _In Fr_ :
 ## IDT Type : 
     - est un champ dans l'entrée de la table des descripteurs d'interruption (IDT) qui spécifie le type de la porte d'interruption.
     - is a field in the interrupt descriptor table (IDT) entry that specifies the type of the interrupt gate.
+
+### TSS ( Task State Segment) : 
+    - est un segment de la GDT qui contient les informations sur l'état de la tâche. ( GDT est une table qui contient les descripteurs de segment).
+    - is a segment in the GDT that contains information about the task state.

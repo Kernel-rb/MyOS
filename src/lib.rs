@@ -10,7 +10,7 @@ use core::panic::PanicInfo;
 pub mod serial;
 pub mod vga_buffer;
 pub mod interrupts;
-
+pub mod gdt;
 
 
 pub trait Testable { //   to define a trait that will be implemented by all types that can be tested
@@ -78,7 +78,7 @@ pub fn exit_qemu(exit_code: QemuExitCode) {
     }
 }
 
-// to define a function that initializes the IDT
 pub fn init(){
+    gdt::init();
     interrupts::init_idt();
 }

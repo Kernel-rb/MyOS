@@ -22,12 +22,16 @@ pub extern "C" fn _start() -> ! {
     // welcome message
     println!("Welcome to  RustOS , version: {}", "0.1.0");
     my_os::init(); // to initialize the OS
-    x86_64::instructions::interrupts::int3(); // to trigger a breakpoint exception
+    
+    fn stack_overflow() {
+        stack_overflow(); // for stack overflow
+    }
+    stack_overflow(); // to test the stack overflow exception
 
     // to test the breakpoint exception
     #[cfg(test)]
     test_main(); 
-    
+
     // to test the breakpoint exception
     println!("It did not crash!");
 
