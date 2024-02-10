@@ -8,7 +8,8 @@
 // mod vga_buffer; // import the module vga_buffer
 // mod serial; // import the module serial
 use core::panic::PanicInfo;
-use my_os::println; // to import the println macro from the my_os crate
+use my_os::{gdt::init, println}; // to import the println macro from the my_os crate
+
 
 
 
@@ -22,12 +23,15 @@ pub extern "C" fn _start() -> ! {
     // welcome message
     println!("Welcome to  RustOS , version: {}", "0.1.0");
     my_os::init(); // to initialize the OS
+
+    
     // to test the breakpoint exception
     #[cfg(test)]
     test_main(); 
 
     // to test the breakpoint exception
     println!("It did not crash!");
+
 
 
     loop {}

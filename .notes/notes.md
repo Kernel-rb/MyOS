@@ -286,3 +286,38 @@ _In Fr_ :
     - est un segment de la GDT qui contient les informations sur l'état de la tâche. ( GDT est une table qui contient les descripteurs de segment).
     - segement est un espace mémoire dans le processeur.
     - is a segment in the GDT that contains information about the task state.
+
+## _Interrupts_ :
+    - est un signal envoyé par le matériel ou le logiciel pour interrompre l'exécution du processeur.
+    - is a signal sent by hardware or software to interrupt the execution of the processor.
+
+## Hardware Interrupts : 
+    - est un signal envoyé par le matériel pour interrompre l'exécution du processeur.
+    - is a signal sent by hardware to interrupt the execution of the processor.
+
+## POLLING :
+    - est une technique pour vérifier périodiquement l'état d'un périphérique ou un processus.
+    - is a technique to periodically check the state of a device or a process. 
+
+## Interrupt Controller :
+    - est un circuit intégré qui gère les interruptions matérielles.
+    - is an integrated circuit that manages hardware interrupts.
+## Concurency : 
+    -  est une technique pour exécuter plusieurs tâches en même temps.
+    -  is a technique to execute multiple tasks at the same time.
+    -  it exist in many programming languages like Rust, C, C++, Java, Go. 
+    -  he does not exist in C# and Python for exmaple , we can't execute multiple tasks at the same time like a web server and a database server.
+
+### Ownership in Rust : 
+    - est une propriété d'une valeur qui garantit qu'elle ne sera pas modifiée ou supprimée par un autre propriétaire. par exemple, dans notre cas, on l'utilise pour gérer les interruptions matérielles.
+    - is a property of a value that guarantees it will not be modified or deleted by another owner.
+### Dead locks : 
+    - est une situation où deux ou plusieurs tâches attendent indéfiniment l'une sur l'autre , autrement dit, une tâche attend une ressource qui est détenue par une autre tâche.
+    - is a situation where two or more tasks wait indefinitely on each other.
+
+## The 8259 PIC :
+    - est un circuit intégré qui gère les interruptions matérielles.
+    - is an integrated circuit that manages hardware interrupts.
+### 0x20 & 0x21 :
+    - sont les ports d'entrée/sortie pour le maître 8259 PIC. 0x20 est le port de commande et 0x21 est le port de données.
+    - are the input/output ports for the master 8259 PIC. 0x20 is the command port and 0x21 is the data port.
