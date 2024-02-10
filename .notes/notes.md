@@ -284,4 +284,5 @@ _In Fr_ :
 
 ### TSS ( Task State Segment) : 
     - est un segment de la GDT qui contient les informations sur l'état de la tâche. ( GDT est une table qui contient les descripteurs de segment).
+    - segement est un espace mémoire dans le processeur.
     - is a segment in the GDT that contains information about the task state.
