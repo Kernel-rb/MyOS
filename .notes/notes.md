@@ -321,3 +321,45 @@ _In Fr_ :
 ### 0x20 & 0x21 :
     - sont les ports d'entrée/sortie pour le maître 8259 PIC. 0x20 est le port de commande et 0x21 est le port de données.
     - are the input/output ports for the master 8259 PIC. 0x20 is the command port and 0x21 is the data port.
+
+## Handling time inetrrupts :
+    - c est une interruption qui se produit à intervalles réguliers. par exemple, dans notre cas, on l'utilise pour gérer les interruptions de l'horloge.
+    - is a technique to handle time interrupts.
+
+## The Programmable Interval Timer (PIT) :
+    - est un circuit intégré qui génère des interruptions de temps.
+    - is an integrated circuit that generates time interrupts.
+
+### APIC (Advanced Programmable Interrupt Controller) :
+    - est un circuit intégré qui gère les interruptions matérielles.
+    - is an integrated circuit that manages hardware interrupts.
+
+### Time Step : 
+    - est un intervalle de temps entre deux interruptions de temps.
+    - is an interval of time between two time interrupts.
+
+
+### hlt instruction : 
+    - est une instruction pour arrêter l'exécution du processeur jusqu'à ce qu'une interruption se produise.
+    - is an instruction to stop the execution of the processor until an interrupt occurs.
+
+### pourquoi le hlt reduit la consomation de cpu ? 
+    - parce que le processeur n'a pas besoin de vérifier périodiquement l'état de l'interruption de temps.
+    - because the processor does not need to periodically check the state of the time interrupt.
+
+## Keyboard input:
+    - est une technique pour lire les entrées du clavier.
+    - is a technique to read the keyboard inputs.
+
+## Scan code :
+    - est un code qui représente une touche du clavier.
+    - is a code that represents a key on the keyboard.
+
+
+### offset :
+    - est un décalage par rapport à une adresse de base. autrement dit, c'est la différence entre deux adresses.
+    - is an offset from a base address.
+
+### interpreting the Scan code :
+    - est une technique pour convertir un scan code  en caractère.
+    - is a technique to convert a scan code to a character.

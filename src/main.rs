@@ -31,10 +31,8 @@ pub extern "C" fn _start() -> ! {
 
     // to test the breakpoint exception
     println!("It did not crash!");
+    my_os::hlt_loop(); // to loop forever
 
-
-
-    loop {}
 }
 
 
@@ -44,8 +42,8 @@ pub extern "C" fn _start() -> ! {
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
-} 
+    my_os::hlt_loop();            // new
+}
 
 #[cfg(test)]
 #[panic_handler]
