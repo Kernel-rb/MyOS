@@ -363,3 +363,52 @@ _In Fr_ :
 ### interpreting the Scan code :
     - est une technique pour convertir un scan code  en caractère.
     - is a technique to convert a scan code to a character.
+
+### Memory protection : 
+    - est une technique pour protéger la mémoire contre les accès non autorisés.
+    - is a technique to protect the memory against unauthorized access.
+## Segmentation :
+    - est une technique pour diviser la mémoire en segments.
+    - is a technique to divide the memory into segments.
+### Virtual Memory :
+    - est une technique pour simuler une mémoire plus grande que la mémoire physique.s
+    - is a technique to simulate a larger memory than the physical memory.
+
+### Fragmentation :
+    - est une situation où la mémoire est divisée en petits morceaux.
+    - is a situation where the memory is divided into small pieces.
+
+### Defragmentation :
+    - est une technique pour regrouper les petits morceaux de mémoire en un seul grand morceau.
+    - is a technique to group the small pieces of memory into one large piece.
+
+#### Disadvanages of Defragmentation :
+    - 1 - it takes time.
+    - 2 - it can cause data loss.
+    - 3 - it can cause system instability.
+    - 4 - Performance issues.
+
+### Paging :
+    - est une technique pour diviser la mémoire en pages.
+    - is a technique to divide the memory into pages.
+
+### Hidden Fragmentation :
+    - est une situation où la mémoire est divisée en petits morceaux mais le système d'exploitation ne le sait pas.
+    - is a situation where the memory is divided into small pieces but the operating system does not know it.
+
+### Page Table :
+    - est une table qui contient les adresses des pages.
+    - is a table that contains the addresses of the pages.
+
+### Multi-level Page Table :
+    - est une technique pour diviser la table des pages en plusieurs niveaux.
+    - is a technique to divide the page table into multiple levels.
+
+### Paging on x86_64 :
+    - est une technique pour diviser la mémoire en pages sur l'architecture x86_64.
+    - is a technique to divide the memory into pages on the x86_64 architecture.
+
+
+### Cr3 Register :
+    - est un registre qui contient l'adresse de la table des pages.
+    - is a register that contains the address of the page table.

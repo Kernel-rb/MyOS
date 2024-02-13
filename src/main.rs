@@ -8,7 +8,7 @@
 // mod vga_buffer; // import the module vga_buffer
 // mod serial; // import the module serial
 use core::panic::PanicInfo;
-use my_os::{gdt::init, println}; // to import the println macro from the my_os crate
+use my_os::println; // to import the println macro from the my_os crate
 
 
 
@@ -24,7 +24,12 @@ pub extern "C" fn _start() -> ! {
     println!("Welcome to  RustOS , version: {}", "0.1.0");
     my_os::init(); // to initialize the OS
 
-    
+    use x86_64::registers::control::Cr3;
+
+    let (level4_page_table , _) =Cr3::read(); // to get the level 4 page table
+    println!("Level 4 page table at: {:?}", level4_page_table.start_address()); // to print the start address of the level 4 page table
+
+
     // to test the breakpoint exception
     #[cfg(test)]
     test_main(); 
