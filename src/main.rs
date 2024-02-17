@@ -9,35 +9,33 @@
 // mod serial; // import the module serial
 use core::panic::PanicInfo;
 use my_os::println; // to import the println macro from the my_os crate
-
-
-
+use bootloader::{BootInfo,entry_point}; //BootInfo : to get the boot information from the bootloader ; entry_point : to define the entry point of the program
 
 // -------------------------------------- Entry Point  --------------------------------------
 #[no_mangle] // mt encodich lia had l function name
-pub extern "C" fn _start() -> ! {
+fn kernel_main(boot_info: &'static BootInfo) -> ! {
     // the default entry point of the program && also is the entry point of every OS
     // "C" => to tell the compiler to use the C calling convention
     // "!": the function never returns 
-    
+    use my_os::memory::active_level_4_table;
+    use x86_64::VirtAddr;
     // welcome message
     println!("Welcome to  RustOS , version: {}", "0.1.0");
     my_os::init(); // to initialize the OS
+    let phys_mem_offset = VirtAddr::new(boot_info.physical_memory_offset); // to get the physical memory offset
+    let l4_table = unsafe { active_level_4_table(phys_mem_offset) };
 
-    use x86_64::registers::control::Cr3;
-
-    let (level4_page_table , _) =Cr3::read(); // to get the level 4 page table
-    println!("Level 4 page table at: {:?}", level4_page_table.start_address()); // to print the start address of the level 4 page table
-
-
-    // to test the breakpoint exception
+    for (i, entry) in l4_table.iter().enumerate() {
+        if !entry.is_unused() {
+            println!("L4 Entry {}: {:?}", i, entry);
+        }
+    }
     #[cfg(test)]
-    test_main(); 
+    test_main();
 
-    // to test the breakpoint exception
+    
     println!("It did not crash!");
-    my_os::hlt_loop(); // to loop forever
-
+    my_os::hlt_loop();
 }
 
 
