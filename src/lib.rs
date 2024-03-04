@@ -50,7 +50,6 @@ pub fn test_panic_handler(info: &PanicInfo) -> ! {
 }
 
 
-/// Entry point for `cargo test`
 #[cfg(test)]
 entry_point!(test_kernel_main);
 #[cfg(test)] 
