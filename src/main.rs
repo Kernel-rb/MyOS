@@ -10,9 +10,8 @@
 use core::panic::PanicInfo;
 use my_os::println; // to import the println macro from the my_os crate
 use bootloader::{BootInfo,entry_point}; //BootInfo : to get the boot information from the bootloader ; entry_point : to define the entry point of the program
-
+entry_point!(kernel_main); // to define the entry point of the program
 // -------------------------------------- Entry Point  --------------------------------------
-#[no_mangle] // mt encodich lia had l function name
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
     // the default entry point of the program && also is the entry point of every OS
     // "C" => to tell the compiler to use the C calling convention
