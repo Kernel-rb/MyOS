@@ -16,16 +16,22 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     // the default entry point of the program && also is the entry point of every OS
     // "C" => to tell the compiler to use the C calling convention
     // "!": the function never returns 
-    use my_os::memory::translate_addr;
-    use x86_64::VirtAddr;
+    use my_os::memory;
+    use x86_64::{structures::paging::Translate, VirtAddr};  
     // welcome message
     println!("Welcome to  RustOS , version: {}", "0.1.0");
     my_os::init(); // to initialize the OS
     let phys_mem_offset = VirtAddr::new(boot_info.physical_memory_offset);
-    let addresses = [0xb8000,0x201008,0x0100_0020_1a10,boot_info.physical_memory_offset];
+    let mapper = unsafe { memory::init(phys_mem_offset) };
+    let addresses = [
+        0xb8000,
+        0x201008,
+        0x0100_0020_1a10,
+        boot_info.physical_memory_offset
+    ];
     for &address in &addresses {
         let virt = VirtAddr::new(address);
-        let phys = unsafe { translate_addr(virt, phys_mem_offset) };
+        let phys = mapper.translate_addr(virt);
         println!("{:?} -> {:?}", virt, phys);
     }
     #[cfg(test)]
