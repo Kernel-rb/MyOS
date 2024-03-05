@@ -42,7 +42,7 @@ fn simple_allocation() {
     let heap_value_2 = Box::new(13);
     assert_eq!(*heap_value_1, 41);
     assert_eq!(*heap_value_2, 13);
-}
+}  
 
 #[test_case]
 fn large_vec() {
