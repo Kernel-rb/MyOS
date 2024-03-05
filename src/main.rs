@@ -3,11 +3,11 @@
 #![feature(custom_test_frameworks)]
 #![test_runner(my_os::test_runner)]
 #![reexport_test_harness_main = "test_main"]
-// #![feature(asm)] it's already enabled by default
 
-// mod vga_buffer; // import the module vga_buffer
-// mod serial; // import the module serial
+extern crate alloc;
+
 use core::panic::PanicInfo;
+use alloc::boxed::Box;
 use my_os::println; // to import the println macro from the my_os crate
 use bootloader::{BootInfo,entry_point}; //BootInfo : to get the boot information from the bootloader ; entry_point : to define the entry point of the program
 
@@ -27,10 +27,12 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     let mut _frame_allocator = unsafe {
         memory::BootInfoFrameAllocator::init(&boot_info.memory_map)
     };
-   
+
+    let _x = Box::new(41);
 
     #[cfg(test)]
-    test_main();  
+    test_main();
+
     println!("It did not crash!");
     my_os::hlt_loop();
 }
