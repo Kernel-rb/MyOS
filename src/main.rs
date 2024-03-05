@@ -11,14 +11,18 @@ use alloc::boxed::Box;
 use my_os::println; // to import the println macro from the my_os crate
 use bootloader::{BootInfo,entry_point}; //BootInfo : to get the boot information from the bootloader ; entry_point : to define the entry point of the program
 
+
+
+
 entry_point!(kernel_main); // to define the entry point of the program
 // -------------------------------------- Entry Point  --------------------------------------
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
     // the default entry point of the program && also is the entry point of every OS
     // "C" => to tell the compiler to use the C calling convention
     // "!": the function never returns 
-    use my_os::memory;
+    use my_os::memory::{self, BootInfoFrameAllocator};
     use x86_64::VirtAddr;  
+    use my_os::allocator;
     // welcome message
     println!("Welcome to  RustOS , version: {}", "0.1.0");
     my_os::init(); // to initialize the OS
@@ -27,7 +31,8 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     let mut _frame_allocator = unsafe {
         memory::BootInfoFrameAllocator::init(&boot_info.memory_map)
     };
-
+    allocator::init_heap(&mut _mapper, &mut _frame_allocator)
+        .expect("heap initialization failed");
     let _x = Box::new(41);
 
     #[cfg(test)]
