@@ -72,3 +72,12 @@ pub fn init_heap(
     Ok(())
 }
 
+
+fn align_up(addr: usize, align: usize) -> usize {
+    let remainder = addr % align;
+    if remainder == 0 {
+        addr // addr already aligned
+    } else {
+        addr - remainder + align
+    }
+}
