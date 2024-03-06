@@ -27,11 +27,20 @@ impl<A> Locked<A> {
             inner: spin::Mutex::new(inner),
         }
     }
-
     pub fn lock(&self) -> spin::MutexGuard<A> {
         self.inner.lock()
     }
 }
+
+fn align_up(addr: usize, align: usize) -> usize {
+    let remainder = addr % align;
+    if remainder == 0 {
+        addr // addr already aligned
+    } else {
+        addr - remainder + align
+    }
+}
+
 pub struct Dummy;
 
 unsafe impl GlobalAlloc for Dummy {
@@ -72,12 +81,3 @@ pub fn init_heap(
     Ok(())
 }
 
-
-fn align_up(addr: usize, align: usize) -> usize {
-    let remainder = addr % align;
-    if remainder == 0 {
-        addr // addr already aligned
-    } else {
-        addr - remainder + align
-    }
-}
