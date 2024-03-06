@@ -8,6 +8,10 @@ use x86_64::{
     VirtAddr,
 };
 
+
+pub mod bump;
+
+
 #[global_allocator]
 static ALLOCATOR: LockedHeap = LockedHeap::empty();
 
