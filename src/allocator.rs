@@ -9,12 +9,13 @@ use x86_64::{
 use alloc::alloc::{GlobalAlloc, Layout};
 use core::ptr::null_mut;
 use bump::BumpAllocator;
-
+use linked_list::LinkedListAllocator;
 
 
 #[global_allocator]
-static ALLOCATOR: Locked<BumpAllocator> = Locked::new(BumpAllocator::new());
-
+static ALLOCATOR: Locked<LinkedListAllocator> =
+    Locked::new(LinkedListAllocator::new());
+    
 pub const HEAP_START: usize = 0x_4444_4444_0000;
 pub const HEAP_SIZE: usize = 100 * 1024; 
 pub struct Locked<A> {
