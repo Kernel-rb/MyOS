@@ -21,7 +21,7 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     // "C" => to tell the compiler to use the C calling convention
     // "!": the function never returns 
     use my_os::memory::{self, BootInfoFrameAllocator};
-    use x86_64::VirtAddr;  
+    use x86_64::VirtAddr;       
     use my_os::allocator;
     // welcome message
     println!("Welcome to  RustOS , version: {}", "0.1.0");
