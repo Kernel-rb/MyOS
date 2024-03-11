@@ -1,5 +1,8 @@
 pub mod bump;
 pub mod linked_list;
+pub mod fixed_size_block;
+
+
 use x86_64::{
     structures::paging::{
         mapper::MapToError, FrameAllocator, Mapper, Page, PageTableFlags, Size4KiB,
