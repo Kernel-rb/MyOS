@@ -1,5 +1,7 @@
 use alloc::alloc::Layout;
 use core::ptr;
+use super::Locked;
+use alloc::alloc::GlobalAlloc;
 
 struct ListNode {
     next: Option<&'static mut ListNode>,
@@ -11,6 +13,34 @@ pub struct FixedSizeBlockAllocator {
     fallback_allocator: linked_list_allocator::Heap,
 }
 
+unsafe impl GlobalAlloc for Locked<FixedSizeBlockAllocator> {
+
+    unsafe fn alloc(&self, layout: Layout) -> *mut u8 {
+        let mut allocator = self.lock();
+        match FixedSizeBlockAllocator::list_index(&layout) {
+            Some(index) => {
+                match allocator.list_heads[index].take() {
+                    Some(node) => {
+                        allocator.list_heads[index] = node.next.take();
+                        node as *mut ListNode as *mut u8
+                    }
+                    None => {
+                        let block_size = BLOCK_SIZES[index];
+                        let block_align = block_size;
+                        let layout = Layout::from_size_align(block_size, block_align)
+                            .unwrap();
+                        allocator.fallback_alloc(layout)
+                    }
+                }
+            }
+            None => allocator.fallback_alloc(layout),
+        }
+    }
+
+    unsafe fn dealloc(&self, ptr: *mut u8, layout: Layout) {
+        todo!();
+    }
+}
 impl FixedSizeBlockAllocator {
     pub const fn new() -> Self {
         const EMPTY: Option<&'static mut ListNode> = None;
@@ -28,5 +58,9 @@ impl FixedSizeBlockAllocator {
             Ok(ptr) => ptr.as_ptr(),
             Err(_) => ptr::null_mut(),
         }
+    }
+    fn list_index(layout: &Layout) -> Option<usize> {
+        let required_block_size = layout.size().max(layout.align());
+        BLOCK_SIZES.iter().position(|&s| s >= required_block_size)
     }
 }
