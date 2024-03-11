@@ -8,7 +8,6 @@ use x86_64::{
 };
 use alloc::alloc::{GlobalAlloc, Layout};
 use core::ptr::null_mut;
-use bump::BumpAllocator;
 use linked_list::LinkedListAllocator;
 
 

@@ -20,7 +20,7 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     // the default entry point of the program && also is the entry point of every OS
     // "C" => to tell the compiler to use the C calling convention
     // "!": the function never returns 
-    use my_os::memory::{self, BootInfoFrameAllocator};
+    use my_os::memory;
     use x86_64::VirtAddr;       
     use my_os::allocator;
     // welcome message
