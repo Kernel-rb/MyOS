@@ -16,3 +16,13 @@ impl SimpleExecutor {
         self.task_queue.push_back(task)
     }
 }
+
+fn dummy_raw_walker() -> RawWaker {
+    todo!();
+}
+
+fn dummy_waker()  -> Waker {
+    unsafe {
+        Waker::from_raw(dummy_raw_walker())
+    }
+}
