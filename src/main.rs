@@ -6,7 +6,7 @@
 
 extern crate alloc;
 
-use core::panic::PanicInfo;
+use core::{num, panic::PanicInfo};
 use alloc::{boxed::Box, vec, vec::Vec, rc::Rc};
 use my_os::println; // to import the println macro from the my_os crate
 use bootloader::{BootInfo,entry_point}; //BootInfo : to get the boot information from the bootloader ; entry_point : to define the entry point of the program
@@ -41,7 +41,7 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     }
     println!("vec at {:p}", vec.as_slice());
 
-    let reference_counted = Rc::new(vec![1, 2, 3]);
+    let reference_counted = Rc::new(vec![1, 2, 3]);    
     let cloned_reference = reference_counted.clone();
     println!(
         "current reference count is {}", 
@@ -60,6 +60,16 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     println!("It did not crash!");
     my_os::hlt_loop();
 }
+
+async fn async_number() -> u32 {
+    42
+}
+
+async fn example_task(){
+    let number = async_number().await;
+    println!("Async number :{}" , number);
+}
+
 
 
 
