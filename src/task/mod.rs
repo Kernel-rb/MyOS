@@ -9,7 +9,7 @@ pub mod simple_executor;
 
 
 pub struct Task {
-    future: Pin<Box<dyn Future<Output = ()>>
+    future: Pin<Box<dyn Future<Output = ()>>>
 }
 
 impl Task {
