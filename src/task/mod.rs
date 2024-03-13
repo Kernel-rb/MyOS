@@ -1,19 +1,17 @@
-use alloc::boxed::Box;
 use core::{
-    future::Future , 
-    pin::Pin ,
-    task::{Context , Poll}
-};
+    future::Future, 
+    pin::Pin,
+    task::{Context, Poll},
 
+};
+use alloc::boxed::Box;
 
 
 pub mod simple_executor;
 
 
-
-
 pub struct Task {
-    future: Pin<Box<dyn Future<Output = ()>>>
+    future: Pin<Box<dyn Future<Output = ()>>>,
 }
 
 impl Task {

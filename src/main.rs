@@ -6,15 +6,13 @@
 
 extern crate alloc;
 
-use core::{num, panic::PanicInfo};
-use alloc::{boxed::Box, vec, vec::Vec, rc::Rc};
+use core::panic::PanicInfo;
 use my_os::println; // to import the println macro from the my_os crate
-use bootloader::{BootInfo,entry_point}; //BootInfo : to get the boot information from the bootloader ; entry_point : to define the entry point of the program
-
-
-
+use bootloader::{BootInfo, entry_point}; //BootInfo : to get the boot information from the bootloader ; entry_point : to define the entry point of the program
+use my_os::task::{Task, simple_executor::SimpleExecutor};
 
 entry_point!(kernel_main); // to define the entry point of the program
+
 // -------------------------------------- Entry Point  --------------------------------------
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
     // the default entry point of the program && also is the entry point of every OS
@@ -33,26 +31,10 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     };
     allocator::init_heap(&mut _mapper, &mut _frame_allocator)
         .expect("heap initialization failed");
-    let heap_value  = Box::new(41);
-    println!("heap_value at {:p}", heap_value);
-    let mut vec = Vec::new();
-    for i in 0..500 {
-        vec.push(i);
-    }
-    println!("vec at {:p}", vec.as_slice());
 
-    let reference_counted = Rc::new(vec![1, 2, 3]);    
-    let cloned_reference = reference_counted.clone();
-    println!(
-        "current reference count is {}", 
-        Rc::strong_count(&cloned_reference)
-    );
-
-    core::mem::drop(reference_counted);
-    println!(
-        "reference count is {} now", 
-        Rc::strong_count(&cloned_reference)
-    );
+    let mut executor = SimpleExecutor::new();
+    executor.spawn(Task::new(example_task()));
+    executor.run();
 
     #[cfg(test)]
     test_main();
@@ -65,13 +47,10 @@ async fn async_number() -> u32 {
     42
 }
 
-async fn example_task(){
+async fn example_task() {
     let number = async_number().await;
-    println!("Async number :{}" , number);
+    println!("async number: {}", number);
 }
-
-
-
 
 // -------------------------------------- Panic Handler  --------------------------------------
 #[cfg(not(test))]
