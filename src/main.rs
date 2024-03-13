@@ -31,7 +31,7 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     };
     allocator::init_heap(&mut _mapper, &mut _frame_allocator).expect("heap initialization failed");
     let mut executor = SimpleExecutor::new();
-    executor.spawn(Task::new(example_task));
+    executor.spawn(Task::new());
     executor.run();
 
 
