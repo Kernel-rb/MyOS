@@ -19,6 +19,7 @@ pub mod interrupts;
 pub mod gdt;
 pub mod memory;
 pub mod allocator;
+pub mod task ;
 
 pub trait Testable { //   to define a trait that will be implemented by all types that can be tested
     fn run(&self) -> ();
