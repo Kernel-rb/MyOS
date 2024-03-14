@@ -1,52 +1,64 @@
-# MyOS
+# MyOS 💻
 
-MyOS is an operating system project written in Rust. Please note that this project is currently under construction and may not be suitable for production use. 🚧
+MyOS is a simple operating system project .
 
-## Project Structure
+## Directory Structure 📂
 
-- **.cargo**: Directory containing cargo configurations.
-- **src**: Source code directory.
-  - **allocator**: Directory containing allocator-related code.
-    - **bump.rs**: Implementation of a bump allocator.
-    - **fixed_size_block.rs**: Implementation of a fixed-size block allocator.
-    - **linked_list.rs**: Implementation of a linked list allocator.
-  - Various Rust source files (.rs) related to your operating system:
-    - **gdt.rs**: Global Descriptor Table implementation.
-    - **interrupts.rs**: Interrupt handling logic.
-    - **lib.rs**: Rust library entry point.
-    - **main.rs**: Main entry point of the operating system.
-    - **memory.rs**: Memory management logic.
-    - **serial.rs**: Serial communication logic.
-    - **vga_buffer.rs**: VGA buffer handling logic.
-- **tests**: Directory containing test files.
-  - **basic_boot.rs**: Test file for basic boot functionality.
-  - **should_panic.rs**: Test file for scenarios that should panic.
-  - **stack_overflow.rs**: Test file for stack overflow scenarios.
-- Other project-related files like **Cargo.toml**, **Cargo.lock**, etc.
+- **.cargo**: Contains Cargo related configurations.
+- **.notes**: Directory for personal notes.
+- **src**: Contains the source code of the operating system.
+  - **allocator**: Source code related to memory allocation.
+  - **task**: Source code related to task management.
+- **target**: Directory where build outputs are stored.
+- **tests**: Contains tests for the operating system.
+- **.gitignore**: Specifies intentionally untracked files to ignore.
+- **Cargo.lock**: Automatically generated file that locks dependencies.
+- **Cargo.toml**: Manifest file for Rust projects.
+- **README.md**: You are here.
+- **x86_64.json**: JSON file containing x86_64 target specifications.
 
-## Source Code Overview
+## Source Code Details 📝
 
-- **src/gdt.rs**: File containing the implementation of the Global Descriptor Table.
-- **src/interrupts.rs**: File containing interrupt handling logic.
-- **src/lib.rs**: Rust library entry point.
-- **src/main.rs**: Main entry point of the operating system.
-- **src/memory.rs**: File containing memory management logic.
-- **src/serial.rs**: File containing serial communication logic.
-- **src/vga_buffer.rs**: File containing VGA buffer handling logic.
+### allocator
+- **bump.rs**: Implementation of a bump allocator.
+- **fixed_size_block.rs**: Implementation of a fixed size block allocator.
+- **linked_list.rs**: Implementation of a linked list allocator.
 
-## Tests
+### task
+- **executor.rs**: Task executor implementation.
+- **keyboard.rs**: Keyboard task implementation.
+- **mod.rs**: Module declaration.
+- **simple_executor.rs**: Simple task executor implementation.
 
-- **tests/basic_boot.rs**: Test file for basic boot functionality.
-- **tests/should_panic.rs**: Test file for scenarios that should panic.
-- **tests/stack_overflow.rs**: Test file for stack overflow scenarios.
+## Tests 🧪
+- **basic_boot.rs**: Test for basic boot functionality.
+- **heap_allocation.rs**: Test for heap memory allocation.
+- **should_panic.rs**: Test for panic behavior.
+- **stack_overflow.rs**: Test for stack overflow.
 
-## Contributing
+## Launching the OS 🚀
 
-Contributions to MyOS are welcome. If you would like to contribute, please fork the repository and submit a pull request. 👍
+To build and run MyOS, follow these instructions:
 
-## Status
+1.Clone the repository to your local machine 
+```bash
+git clone  https://github.com/Kernel-rb/MyOS.git
+```
 
-🚧 Work in Progress 🚧
+2. Change the working directory to the project directory
+```bash
+cd MyOS
+```
+
+3. Build the project using Cargo
+```bash
+cargo build
+```
+
+4. Run the project using QEMU
+```bash
+cargo run
+```
 
 ## Helpful Resources
 
