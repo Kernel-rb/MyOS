@@ -7,6 +7,8 @@
 extern crate alloc;
 
 use core::panic::PanicInfo;
+use alloc::string::String;
+use alloc::string::ToString;
 use my_os::println; // to import the println macro from the my_os crate
 use bootloader::{BootInfo, entry_point}; //BootInfo : to get the boot information from the bootloader ; entry_point : to define the entry point of the program
 use my_os::task::Task;
@@ -33,7 +35,7 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     allocator::init_heap(&mut _mapper, &mut _frame_allocator).expect("heap initialization failed");
     #[cfg(test)]
     test_main();
-    
+
     let mut executor = Executor::new();
     executor.spawn(Task::new(example_task()));
     executor.spawn(Task::new(keyboard::print_keypresses()));
@@ -43,13 +45,13 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
 
 }
 
-async fn async_number() -> u32 {
-    42
+async fn async_auhtor() -> String {
+    "Kernel.rb".to_string()
 }
 
 async fn example_task() {
-    let number = async_number().await;
-    println!("async number: {}", number);
+    let author = async_auhtor().await;
+    println!("by : {}", author);
 }
 
 // -------------------------------------- Panic Handler  --------------------------------------

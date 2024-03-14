@@ -1,6 +1,7 @@
 # MyOS 💻
 
 MyOS is a simple operating system project .
+![alt text](.img/image.png)
 
 ## Directory Structure 📂
 
