@@ -27,6 +27,17 @@ test-args = [
 test-success-exit-code = 33   # QEMU exit code for success
 test-timeout = 300    # timeout after 5 min 
 
+
+[dependencies.crossbeam-queue]
+version = "0.2.1"
+default-features = false
+features = ["alloc"]
+
+[dependencies.conquer-once]
+version = "0.2.0"
+default-features = false
+
+
 # ------------------------------- Test Configuration -------------------------------
 
 [[test]] 
