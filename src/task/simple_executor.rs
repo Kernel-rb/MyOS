@@ -8,8 +8,8 @@ pub struct SimpleExecutor {
 }
 
 impl SimpleExecutor {
-    pub fn new() -> SimpleExecutor {
-        SimpleExecutor {
+    pub fn new() -> Self {
+        Self {
             task_queue: VecDeque::new(),
         }
     }
