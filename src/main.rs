@@ -9,8 +9,9 @@ extern crate alloc;
 use core::panic::PanicInfo;
 use my_os::println; // to import the println macro from the my_os crate
 use bootloader::{BootInfo, entry_point}; //BootInfo : to get the boot information from the bootloader ; entry_point : to define the entry point of the program
-use my_os::task::{Task, simple_executor::SimpleExecutor};
+use my_os::task::Task;
 use my_os::task::keyboard;
+use my_os::task::executor::Executor;
 
 entry_point!(kernel_main); // to define the entry point of the program
 // -------------------------------------- Entry Point  --------------------------------------
@@ -30,17 +31,16 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
         memory::BootInfoFrameAllocator::init(&boot_info.memory_map)
     };
     allocator::init_heap(&mut _mapper, &mut _frame_allocator).expect("heap initialization failed");
-    let mut executor = SimpleExecutor::new();
+    #[cfg(test)]
+    test_main();
+    
+    let mut executor = Executor::new();
     executor.spawn(Task::new(example_task()));
     executor.spawn(Task::new(keyboard::print_keypresses()));
     executor.run();
 
 
-    #[cfg(test)]
-    test_main();
 
-    println!("It did not crash!");
-    my_os::hlt_loop();
 }
 
 async fn async_number() -> u32 {
